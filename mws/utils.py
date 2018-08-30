@@ -222,8 +222,12 @@ def dict_keyed_param(param, dict_from):
     """
     params = {}
     for k, v in dict_from.items():
+
+        if type(v) is bool:
+            v = str(v).lower()
+
         params.update({
-            "{param}.{key}".format(param=param, key=k): v
+            "{param}.{key}".format(param=param, key=k): str(v)
         })
     return params
 
